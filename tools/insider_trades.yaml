@@ -1,0 +1,48 @@
+identity:
+  name: insider_trades
+  author: alphai
+  label:
+    en_US: Insider trades
+description:
+  human:
+    en_US: SEC Form 4 insider purchases and sales, for one ticker or the whole US market.
+  llm: Get recent SEC Form 4 insider transactions. Each item names the insider and their role, the side (buy or sell), shares, average price, total value in USD, the trade and filing dates, whether it was under a Rule 10b5-1 plan, and for sales whether the insider chose to sell (discretionary) or the sale followed a plan or paperwork (plan_like).
+parameters:
+  - name: symbol
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Ticker
+    human_description:
+      en_US: Optional. Leave empty for the whole market.
+    llm_description: Optional US ticker. Omit it to get insider trades across the market.
+  - name: decision
+    type: select
+    required: false
+    form: form
+    label:
+      en_US: Sales only
+    human_description:
+      en_US: Optional filter on sales.
+    options:
+      - value: discretionary
+        label:
+          en_US: Sales the insider chose to make
+      - value: plan_like
+        label:
+          en_US: Plan or paperwork sales
+  - name: limit
+    type: number
+    required: false
+    default: 10
+    min: 1
+    max: 20
+    form: form
+    label:
+      en_US: Number of items
+    human_description:
+      en_US: From 1 to 20.
+extra:
+  python:
+    source: tools/insider_trades.py

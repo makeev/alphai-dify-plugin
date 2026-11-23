@@ -1,0 +1,53 @@
+identity:
+  name: ticker_news
+  author: alphai
+  label:
+    en_US: Ticker news
+description:
+  human:
+    en_US: Latest news about one stock or crypto asset, ranked by an AI relevance score, with the sentiment toward each ticker.
+  llm: Get the latest news about one ticker. Each item has a title, a summary, the publisher link, a 1-10 relevance score, a category and the sentiment (positive, negative or neutral) toward every ticker it is tagged with. Coverage of one event from several outlets is grouped into one story by default.
+parameters:
+  - name: symbol
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Ticker
+    human_description:
+      en_US: NVDA for US stocks, BTC-USD for crypto, SAP.DE or VOD.L for other markets.
+    llm_description: One ticker symbol. US stocks are bare (NVDA), crypto uses the -USD form (BTC-USD), other markets use a Yahoo suffix (SAP.DE).
+  - name: min_relevance
+    type: number
+    required: false
+    default: 4
+    min: 1
+    max: 10
+    form: form
+    label:
+      en_US: Minimum relevance
+    human_description:
+      en_US: Only items scored at least this high, from 1 to 10. Raise it to 7 for major news only.
+  - name: limit
+    type: number
+    required: false
+    default: 10
+    min: 1
+    max: 20
+    form: form
+    label:
+      en_US: Number of items
+    human_description:
+      en_US: From 1 to 20.
+  - name: collapse_stories
+    type: boolean
+    required: false
+    default: true
+    form: form
+    label:
+      en_US: Group into stories
+    human_description:
+      en_US: Return one item per event instead of every reprint of it.
+extra:
+  python:
+    source: tools/ticker_news.py

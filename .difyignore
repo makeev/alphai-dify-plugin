@@ -1,0 +1,14 @@
+.git/
+.gitignore
+.env
+.venv/
+.python-version
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+tests/
+dist/
+*.difypkg
+uv.lock
+.DS_Store

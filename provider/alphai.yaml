@@ -1,0 +1,30 @@
+identity:
+  author: alphai
+  name: alphai_financial_news
+  label:
+    en_US: AlphAI Financial News
+  description:
+    en_US: Financial news scored for relevance, grouped into stories, with per-ticker sentiment and SEC Form 4 insider trades.
+  icon: icon.svg
+  tags:
+    - finance
+    - news
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: AlphAI API key
+    placeholder:
+      en_US: ak_live_...
+    help:
+      en_US: Create a key at alphai.io. The free plan allows 20 requests a minute and 100 a day; calls count against your own plan.
+    url: https://alphai.io/account/api-keys
+tools:
+  - tools/ticker_news.yaml
+  - tools/news_search.yaml
+  - tools/watchlist_brief.yaml
+  - tools/insider_trades.yaml
+extra:
+  python:
+    source: provider/alphai.py

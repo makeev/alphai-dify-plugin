@@ -1,0 +1,42 @@
+identity:
+  name: news_search
+  author: alphai
+  label:
+    en_US: Search news
+description:
+  human:
+    en_US: Search financial news by keywords, optionally for one ticker.
+  llm: Full-text search over AlphAI's scored financial news. Use it for topics, events or names, such as "chip export controls" or "FOMC rate decision". Returns the best matches with a summary, publisher link, relevance score, per-ticker sentiment and the matching passage.
+parameters:
+  - name: query
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Query
+    human_description:
+      en_US: Keywords, for example "chip export controls".
+    llm_description: Search keywords in English.
+  - name: symbol
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Ticker
+    human_description:
+      en_US: Optional. Only news tagged with this ticker.
+    llm_description: Optional ticker to narrow the search, in the same form as for ticker news.
+  - name: limit
+    type: number
+    required: false
+    default: 10
+    min: 1
+    max: 20
+    form: form
+    label:
+      en_US: Number of items
+    human_description:
+      en_US: From 1 to 20.
+extra:
+  python:
+    source: tools/news_search.py

@@ -1,0 +1,44 @@
+identity:
+  name: watchlist_brief
+  author: alphai
+  label:
+    en_US: Watchlist brief
+description:
+  human:
+    en_US: One brief for up to 100 tickers. Recent news grouped by story, SEC filings apart, and the next confirmed earnings dates.
+  llm: Get a ranked brief across several tickers in one call. Returns news events grouped by story (with the matched tickers and the sentiment toward each), a separate section of SEC Form 4, 8-K and 6-K filings, upcoming confirmed earnings dates, and any tickers that were not recognized.
+parameters:
+  - name: tickers
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Tickers
+    human_description:
+      en_US: Comma-separated, up to 100, for example NVDA,AAPL,BTC-USD.
+    llm_description: Comma-separated ticker symbols, up to 100.
+  - name: hours
+    type: number
+    required: false
+    default: 24
+    min: 1
+    max: 168
+    form: form
+    label:
+      en_US: Look-back hours
+    human_description:
+      en_US: From 1 to 168 (one week).
+  - name: limit
+    type: number
+    required: false
+    default: 10
+    min: 1
+    max: 20
+    form: form
+    label:
+      en_US: Stories per section
+    human_description:
+      en_US: From 1 to 20.
+extra:
+  python:
+    source: tools/watchlist_brief.py
