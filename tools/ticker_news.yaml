@@ -15,8 +15,8 @@ parameters:
     label:
       en_US: Ticker
     human_description:
-      en_US: NVDA for US stocks, BTC-USD for crypto, SAP.DE or VOD.L for other markets.
-    llm_description: One ticker symbol. US stocks are bare (NVDA), crypto uses the -USD form (BTC-USD), other markets use a Yahoo suffix (SAP.DE).
+      en_US: NVDA for US stocks, BTC-USD for crypto. A company with a US listing goes by its US ticker (SAP, ASML); other markets use a Yahoo suffix such as 0700.HK.
+    llm_description: One ticker symbol. US stocks are bare (NVDA), crypto uses the -USD form (BTC-USD). A company with a US listing is tagged under its US ticker (SAP, not SAP.DE); other markets use a Yahoo suffix (0700.HK).
   - name: min_relevance
     type: number
     required: false

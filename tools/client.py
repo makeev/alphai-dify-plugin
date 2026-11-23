@@ -25,7 +25,7 @@ def normalize_symbol(value: Any) -> str:
     if not _SYMBOL.match(symbol):
         raise ValueError(
             f"'{value}' is not a ticker. Use NVDA for US stocks, BTC-USD for crypto, "
-            "or a Yahoo suffix such as SAP.DE for other markets."
+            "or a Yahoo suffix such as 0700.HK for other markets."
         )
     return symbol
 

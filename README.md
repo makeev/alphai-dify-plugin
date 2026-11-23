@@ -13,7 +13,7 @@ Source code: https://github.com/makeev/alphai-dify-plugin
 | Watchlist brief | One brief for up to 100 tickers: news by story, SEC filings, upcoming earnings dates |
 | Insider trades | SEC Form 4 purchases and sales for one ticker or the whole market, with a filter for sales the insider chose to make |
 
-Symbols: `NVDA` for US stocks, `BTC-USD` for crypto, a Yahoo suffix such as `SAP.DE` or `VOD.L` for other markets. News is English only.
+Symbols: `NVDA` for US stocks, `BTC-USD` for crypto. A company with a US listing is tagged under its US ticker (`SAP`, not `SAP.DE`); other markets use a Yahoo suffix such as `0700.HK`. News is English only.
 
 ## Setup
 
