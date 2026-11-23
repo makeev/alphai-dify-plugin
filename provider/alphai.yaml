@@ -19,7 +19,7 @@ credentials_for_provider:
       en_US: ak_live_...
     help:
       en_US: Create a key at alphai.io. The free plan allows 20 requests a minute and 100 a day; calls count against your own plan.
-    url: https://alphai.io/account/api-keys
+    url: https://alphai.io/account/api-keys?utm_source=dify&utm_medium=partner
 tools:
   - tools/ticker_news.yaml
   - tools/news_search.yaml

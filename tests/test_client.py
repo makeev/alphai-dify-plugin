@@ -79,3 +79,15 @@ def test_bad_decision_is_refused():
     client, _ = _client()
     with pytest.raises(ValueError):
         client.insider(decision="everything")
+
+
+def test_dify_string_values_are_understood():
+    client, session = _client()
+    client.ticker_news("NVDA", min_relevance="6", limit="3.0", collapse="False")
+    assert session.get.call_args.kwargs["params"] == {
+        "symbol": "NVDA",
+        "min_relevance": 6,
+        "page_size": 3,
+    }
+    client.ticker_news("NVDA", collapse="True")
+    assert session.get.call_args.kwargs["params"]["collapse"] == "story"

@@ -1,6 +1,6 @@
 # AlphAI Financial News
 
-Financial news for agents and workflows, from the [AlphAI](https://alphai.io) API. Every article is tagged with the tickers it is about, scored from 1 to 10 for relevance, and carries the sentiment toward each tagged ticker. Coverage of one event from several outlets is grouped into a single story.
+Financial news for agents and workflows, from the [AlphAI](https://alphai.io/?utm_source=dify&utm_medium=partner) API. Every article is tagged with the tickers it is about, scored from 1 to 10 for relevance, and carries the sentiment toward each tagged ticker. Coverage of one event from several outlets is grouped into a single story.
 
 Source code: https://github.com/makeev/alphai-dify-plugin
 
@@ -17,7 +17,7 @@ Symbols: `NVDA` for US stocks, `BTC-USD` for crypto, a Yahoo suffix such as `SAP
 
 ## Setup
 
-1. Create an API key at [alphai.io/account/api-keys](https://alphai.io/account/api-keys). The free plan allows 20 requests a minute and 100 a day.
+1. Create an API key at [alphai.io/account/api-keys](https://alphai.io/account/api-keys?utm_source=dify&utm_medium=partner). The free plan allows 20 requests a minute and 100 a day.
 2. In Dify, install the plugin, open **Tools → AlphAI Financial News → Authorize** and paste the key.
 3. Add any of the four tools to an agent or a workflow.
 
@@ -29,7 +29,7 @@ An agent with **Ticker news** and **Insider trades**, asked "What happened with 
 
 ## Links
 
-- API reference: https://alphai.io/developers
+- API reference: https://alphai.io/developers?utm_source=dify&utm_medium=partner
 - Terms: https://alphai.io/terms
 - Privacy: [PRIVACY.md](PRIVACY.md)
 - Support: info@alphai.io

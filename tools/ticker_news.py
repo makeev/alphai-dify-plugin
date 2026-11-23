@@ -14,7 +14,7 @@ class TickerNewsTool(base.AlphAITool):
                     tool_parameters.get("symbol"),
                     min_relevance=tool_parameters.get("min_relevance", 4),
                     limit=tool_parameters.get("limit", 10),
-                    collapse=tool_parameters.get("collapse_stories", True) is not False,
+                    collapse=tool_parameters.get("collapse_stories", True),
                 )
             )
         )

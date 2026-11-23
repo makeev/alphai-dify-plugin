@@ -46,11 +46,24 @@ def normalize_symbols(value: Any, maximum: int = 100) -> list[str]:
 
 
 def clamp(value: Any, low: int, high: int, default: int) -> int:
+    """Dify may hand form values over as numbers or as strings ("3", "3.0")."""
     try:
-        number = int(value)
+        number = int(float(str(value).strip()))
     except (TypeError, ValueError):
         return default
     return max(low, min(high, number))
+
+
+def as_bool(value: Any, default: bool) -> bool:
+    """Dify may hand a boolean over as True or as the string "True" / "false"."""
+    if isinstance(value, bool):
+        return value
+    text = str(value).strip().lower() if value is not None else ""
+    if text in ("true", "1", "yes", "on"):
+        return True
+    if text in ("false", "0", "no", "off"):
+        return False
+    return default
 
 
 class AlphAIClient:
@@ -88,7 +101,7 @@ class AlphAIClient:
             raise AlphAIError("AlphAI returned a response that is not JSON.") from None
 
     def ticker_news(
-        self, symbol: str, min_relevance: int = 4, limit: int = 10, collapse: bool = True
+        self, symbol: str, min_relevance: Any = 4, limit: Any = 10, collapse: Any = True
     ) -> JsonPayload:
         return self._get(
             "/api/news/",
@@ -96,7 +109,7 @@ class AlphAIClient:
                 "symbol": normalize_symbol(symbol),
                 "min_relevance": clamp(min_relevance, 1, 10, 4),
                 "page_size": clamp(limit, 1, MAX_PAGE, 10),
-                "collapse": "story" if collapse else None,
+                "collapse": "story" if as_bool(collapse, True) else None,
             },
         )
 
@@ -118,7 +131,7 @@ class AlphAIClient:
                 "symbol": normalize_symbol(symbol) if symbol else None,
                 "min_relevance": clamp(min_relevance, 1, 10, 4) if min_relevance else None,
                 "page_size": clamp(limit, 1, MAX_PAGE, 10),
-                "collapse": "story" if collapse else None,
+                "collapse": "story" if as_bool(collapse, True) else None,
             },
         )
 
