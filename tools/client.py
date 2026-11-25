@@ -9,7 +9,7 @@ import requests
 
 BASE_URL = "https://api.alphai.io"
 TIMEOUT_SECONDS = 20
-USER_AGENT = "alphai-dify-plugin/0.0.1"
+USER_AGENT = "alphai-dify-plugin/0.0.2"
 MAX_PAGE = 20  # 1-20 works on every plan; larger pages need a Pro key
 _SYMBOL = re.compile(r"^[A-Z0-9][A-Z0-9.\-]{0,19}$")
 

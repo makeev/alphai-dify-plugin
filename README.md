@@ -23,6 +23,10 @@ Symbols: `NVDA` for US stocks, `BTC-USD` for crypto. A company with a US listing
 
 Each tool call is one API request. A wrong key, an exhausted quota or an unknown ticker comes back as a plain message instead of results.
 
+## Connection requirements
+
+The plugin connects to one endpoint, `https://api.alphai.io`, over HTTPS and to nothing else. A self-hosted Dify behind a firewall needs outbound access to `api.alphai.io` on port 443. No inbound connection or callback URL is needed.
+
 ## Example
 
 An agent with **Ticker news** and **Insider trades**, asked "What happened with NVDA this week, and are insiders selling?", calls Ticker news with `symbol=NVDA` and Insider trades with `symbol=NVDA, decision=discretionary`, then answers from the scored items and links to the publishers.
